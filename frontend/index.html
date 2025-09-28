@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Risk Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p class="text-gray-600">Loading Dashboard...</p>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Left side: Logo and Links -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img id="logo" src="matsya_logo.png" alt="Logo" class="h-10 w-auto" />
+                   
+                    </a>
+                </div>
+                <!-- Right side: Desktop Links -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="nav-link active">DASHBOARD</a>
+                        <a href="precautions.html" class="nav-link">PRECAUTIONS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Location Bar -->
+    <div class="bg-gray-100 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="py-2 text-sm text-gray-600 ml-1">
+                <i class="fas fa-map-marker-alt mr-2"></i><strong>Current Location:</strong> Gurdaspur, Punjab
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <main class="p-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Top row - Key metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                <!-- Current Flood Risk -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-exclamation-triangle text-blue-600"></i>
+                        <h3>Current Flood Risk</h3>
+                    </div>
+                    <div id="flood-risk-content" class="card-content">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+
+                <!-- Current River Level -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-tint text-blue-600"></i>
+                        <h3>Current River Level</h3>
+                    </div>
+                    <div id="river-level-content" class="card-content">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line text-blue-600"></i>
+                        <h3>System Status</h3>
+                    </div>
+                    <div id="system-stats-content" class="card-content">
+                        <div class="stat-item">
+                            <span class="stat-label">Active Sensors</span>
+                            <span class="stat-value text-green-600">12</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Last Update</span>
+                            <span class="stat-value" id="last-update">2 min ago</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">System Status</span>
+                            <span class="stat-value text-green-600">Online</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle row - Forecasts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <!-- Rain Forecast -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-cloud-rain text-blue-600"></i>
+                        <h3>5-Day Rain Forecast</h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="rain-forecast-chart" width="400" height="250"></canvas>
+                    </div>
+                </div>
+
+                <!-- River Level Forecast -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-water text-blue-600"></i>
+                        <h3>5-Day River Level Forecast</h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="river-forecast-chart" width="400" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom row - History and Comparison -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <!-- River Level History -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-history text-blue-600"></i>
+                        <h3>Last 30 Days River Level</h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="river-history-chart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+
+                <!-- Rainfall Comparison -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-calendar-alt text-blue-600"></i>
+                        <h3>Rainfall Comparison</h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="rainfall-comparison-chart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="dashboard-card col-span-full">
+                <div class="card-header">
+                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                    <h3>Flood Risk Map</h3>
+                </div>
+                <div class="card-content">
+                    <div class="map-container">
+                        <div id="map-loading" class="map-loading">
+                            <div class="loading-spinner"></div>
+                            <p class="mt-4 text-gray-600">Loading map...</p>
+                        </div>
+                        <iframe id="flood-map" 
+                                title="Flood Risk Map" 
+                                class="map-iframe">
+                        </iframe>
+                        <div id="map-fallback" class="map-fallback">
+                            <i class="fas fa-map-marker-alt text-gray-400 text-4xl mb-4"></i>
+                            <p class="text-gray-600">Map data will be displayed here</p>
+                            <p class="text-sm text-gray-400 mt-2" id="map-endpoint"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="error-modal">
+        <div class="error-modal-content">
+            <div class="error-modal-header">
+                <i class="fas fa-exclamation-circle text-red-500"></i>
+                <h3>Connection Error</h3>
+            </div>
+            <div class="error-modal-body">
+                <p id="error-message"></p>
+                <button id="retry-btn" class="retry-btn">
+                    <i class="fas fa-redo"></i> Retry
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

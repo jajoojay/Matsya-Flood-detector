@@ -1,0 +1,12 @@
+Flask
+Flask-Cors
+PyYAML
+pandas
+scikit-learn
+statsmodels
+matplotlib
+seaborn
+geopandas
+rasterio
+folium
+rtree

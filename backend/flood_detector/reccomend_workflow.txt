@@ -1,0 +1,6 @@
+pip install -r requirements.txt
+python download_era5_upstream.py   # if you need ERA5 historical (optional if you already have upstream csv)
+python data_prep.py
+python train_river_model.py
+python train_flood_model.py
+python combine.py                 # runs forecasting + prediction + dashboard

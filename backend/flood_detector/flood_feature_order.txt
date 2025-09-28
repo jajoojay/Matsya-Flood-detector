@@ -1,0 +1,11 @@
+gurd_rain
+upstream_rain
+river_level
+up_rain_prev1
+up_rain_prev3
+up_rain_prev7
+stage_max_prev1
+stage_mean_prev1
+gurd_rain_prev1
+gurd_rain_prev3
+gurd_rain_prev7

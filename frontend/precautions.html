@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Precaution Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* bg-gray-50 */
+        }
+        /* Navbar styles from styles.css */
+        .nav-link {
+            color: #4b5563; /* gray-600 */
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-weight: 500;
+            font-size: 0.875rem; /* text-sm */
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link:hover {
+            background-color: #f3f4f6; /* gray-100 */
+            color: #1f2937; /* gray-800 */
+        }
+        .nav-link.active {
+            color: #2563eb; /* blue-600 */
+            font-weight: 600;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .card-header {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .theory {
+            font-size: 0.875rem; /* text-sm */
+            font-style: italic;
+            color: #6b7280; /* text-gray-500 */
+            border-left: 2px solid #d1d5db; /* border-gray-300 */
+            padding-left: 0.75rem; /* pl-3 */
+            margin-top: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            color: #ffffff;
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        .tab-button:not(.active) {
+            color: #374151;
+            background-color: #ffffff;
+            border-color: #d1d5db;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Left side: Logo and Links -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img id="logo" src="matsya_logo.png" alt="Logo" class="h-10 w-auto" />
+                    </a>
+                </div>
+                <!-- Right side: Desktop Links -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="nav-link">DASHBOARD</a>
+                        <a href="precautions.html" class="nav-link active">PRECAUTIONS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="max-w-7xl mx-auto">
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">Flood & Crop Safety Dashboard</h1>
+            <p class="mt-2 text-md sm:text-lg text-gray-600">Comprehensive Precautionary Measures</p>
+        </header>
+
+        <div class="mb-8 flex justify-center space-x-2 sm:space-x-4">
+            <button id="flood-tab-btn" class="tab-button active px-4 py-2 text-sm sm:text-base font-semibold rounded-full border" onclick="showTab('flood')">Flood Precautions</button>
+            <button id="crop-tab-btn" class="tab-button px-4 py-2 text-sm sm:text-base font-semibold rounded-full border" onclick="showTab('crop')">Crop Disaster Precautions</button>
+        </div>
+
+        <main id="flood-content" class="tab-content active">
+            <div class="space-y-8">
+                <h2 class="text-2xl font-bold text-center text-gray-700">Flood Precaution</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card">
+                        <div class="card-header p-4"><h3 class="text-xl font-bold text-blue-600">1. Before the Flood</h3></div>
+                        <div class="p-6 space-y-5">
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">1.1 Home Preparedness</h4>
+                                <p class="theory">Strengthening household infrastructure reduces water damage and improves safety.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Elevate electrical appliances and seal wall cracks.</li>
+                                    <li>Store valuables and documents in waterproof containers.</li>
+                                    <li>Keep sandbags or bricks ready to block water entry.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">1.2 Emergency Kit Preparation</h4>
+                                <p class="theory">A well-stocked emergency kit ensures survival and comfort during displacement.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Include dry food, clean water, flashlight, batteries, first aid, and essential medicines.</li>
+                                    <li>Add copies of ID cards, land papers, and insurance documents.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">1.3 Awareness & Planning</h4>
+                                <p class="theory">Knowing your environment and evacuation routes reduces panic and confusion.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Identify nearby shelters, hospitals, and high ground.</li>
+                                    <li>Share evacuation plans with family and neighbors.</li>
+                                    <li>Subscribe to local alert systems (SMS, WhatsApp, radio).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header p-4"><h3 class="text-xl font-bold text-red-600">2. During the Flood</h3></div>
+                        <div class="p-6 space-y-5">
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">2.1 Safe Evacuation</h4>
+                                <p class="theory">Timely evacuation prevents injury and loss of life.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Leave early if advised by authorities.</li>
+                                    <li>Assist elderly, children, and disabled individuals.</li>
+                                    <li>Carry essentials and avoid returning until declared safe.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">2.2 Avoiding Hazards</h4>
+                                <p class="theory">Floodwaters conceal dangers that can cause injury or death.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Never walk or drive through moving water.</li>
+                                    <li>Stay away from electric poles, transformers, and submerged wires.</li>
+                                    <li>Avoid contaminated water sources.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-lg text-gray-800">2.3 Shelter Behavior</h4>
+                                <p class="theory">Cooperation in shelters ensures safety and resource sharing.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Bring your own bedding and basic supplies.</li>
+                                    <li>Follow instructions from volunteers and officials.</li>
+                                    <li>Maintain hygiene and help others when possible.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header p-4"><h3 class="text-xl font-bold text-green-600">3. After the Flood</h3></div>
+                        <div class="p-6 space-y-5">
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">3.1 Home Recovery</h4>
+                                <p class="theory">Cleaning and disinfecting prevents disease and restores living conditions.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Use bleaching powder or disinfectants to clean surfaces.</li>
+                                    <li>Dispose of spoiled food and sanitize utensils.</li>
+                                    <li>Check for structural damage before reoccupying.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">3.2 Water & Food Safety</h4>
+                                <p class="theory">Contaminated resources can lead to outbreaks of illness.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Boil drinking water or use purification tablets.</li>
+                                    <li>Avoid using wells or hand pumps until cleared by officials.</li>
+                                    <li>Consume only packaged or verified food supplies.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-lg text-gray-800">3.3 Mental & Social Support</h4>
+                                <p class="theory">Emotional recovery is essential for long-term resilience.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Talk to neighbors and share experiences.</li>
+                                    <li>Seek counseling if feeling anxious or overwhelmed.</li>
+                                    <li>Participate in community rebuilding efforts.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="card max-w-2xl mx-auto">
+                    <div class="card-header p-4"><h3 class="text-xl font-bold text-gray-700">4. Community-Level Actions</h3></div>
+                    <div class="p-6 space-y-5">
+                        <div>
+                            <h4 class="font-semibold text-lg text-gray-800">4.1 Neighborhood Watch</h4>
+                            <p class="theory">Local coordination improves response speed and resource sharing.</p>
+                            <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                <li>Form groups to monitor water levels and coordinate evacuations.</li>
+                                <li>Share boats, tractors, and first aid kits.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg text-gray-800">4.2 Awareness Drives</h4>
+                            <p class="theory">Education empowers people to act safely and responsibly.</p>
+                            <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                <li>Organize street plays, posters, or school sessions on flood safety.</li>
+                                <li>Encourage youth to volunteer during emergencies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <main id="crop-content" class="tab-content">
+             <div class="space-y-8">
+                <h2 class="text-2xl font-bold text-center text-gray-700">Crop Disaster Precaution</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card">
+                        <div class="card-header p-4"><h3 class="text-xl font-bold text-blue-600">1. Before the Disaster: Planning & Risk Reduction</h3></div>
+                        <div class="p-6 space-y-5">
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">1.1 Crop Selection & Diversification</h4>
+                                <p class="theory">Diversifying crops reduces dependency and spreads risk across seasons.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Choose flood-tolerant or short-duration varieties (e.g., jute, maize, moong).</li>
+                                    <li>Avoid sowing in low-lying or flood-prone plots during monsoon.</li>
+                                    <li>Use staggered planting schedules to minimize total loss.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">1.2 Field Preparation & Drainage</h4>
+                                <p class="theory">Proper land management improves water flow and reduces crop damage.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Build raised bunds and contour trenches to redirect water.</li>
+                                    <li>Install field drains to prevent waterlogging.</li>
+                                    <li>Add organic matter to strengthen soil structure.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-lg text-gray-800">1.3 Personal Documentation & Insurance</h4>
+                                <p class="theory">Having records and coverage ensures financial recovery.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Enroll in crop insurance schemes like PMFBY.</li>
+                                    <li>Keep land records, sowing dates, and crop photos safe and updated.</li>
+                                    <li>Store documents in waterproof bags or digital backups.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header p-4"><h3 class="text-xl font-bold text-red-600">2. During the Disaster: Emergency Crop Protection</h3></div>
+                        <div class="p-6 space-y-5">
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">2.1 Protecting Standing Crops</h4>
+                                <p class="theory">Timely action can reduce irreversible damage.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Drain stagnant water from fields within 48 hours.</li>
+                                    <li>Use sandbags or temporary bunds to protect nursery beds.</li>
+                                    <li>Apply foliar sprays to revive stressed plants.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">2.2 Safeguarding Farm Inputs & Livelihood</h4>
+                                <p class="theory">Preserving farm assets ensures continuity after the flood.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Move seeds, fertilizers, and tools to elevated storage.</li>
+                                    <li>Relocate livestock to safe shelters with feed and water.</li>
+                                    <li>Avoid pesticide use during floods to prevent runoff contamination.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header p-4"><h3 class="text-xl font-bold text-green-600">3. After the Disaster: Recovery & Replanting</h3></div>
+                        <div class="p-6 space-y-5">
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">3.1 Soil Health Restoration</h4>
+                                <p class="theory">Rebuilding soil fertility is essential for replanting.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Test soil for pH and nutrient loss.</li>
+                                    <li>Apply gypsum or lime to neutralize acidity.</li>
+                                    <li>Use green manure or legumes to restore organic content.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-800">3.2 Replanting & Income Recovery</h4>
+                                <p class="theory">Short-duration crops offer quick returns and food security.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Choose fast-growing varieties like urad, moong, or maize.</li>
+                                    <li>Use direct seeding or transplanting based on field condition.</li>
+                                    <li>Coordinate with local agriculture officers for seed support.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-lg text-gray-800">3.3 Claim Filing & Financial Aid</h4>
+                                <p class="theory">Timely documentation helps secure compensation.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Submit crop loss reports within the official window.</li>
+                                    <li>Attach geo-tagged photos and field survey forms.</li>
+                                    <li>Follow up with agriculture offices or Common Service Centres (CSCs).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card max-w-2xl mx-auto">
+                    <div class="card-header p-4"><h3 class="text-xl font-bold text-gray-700">4. Community-Level Civilian Actions</h3></div>
+                    <div class="p-6 space-y-5">
+                        <div>
+                            <h4 class="font-semibold text-lg text-gray-800">4.1 Farmer Networks & Resource Sharing</h4>
+                            <p class="theory">Collective action improves resilience and access to support.</p>
+                            <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                <li>Form local groups to share tools, seeds, and transport.</li>
+                                <li>Organize community seed banks and emergency storage hubs.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg text-gray-800">4.2 Awareness & Training</h4>
+                            <p class="theory">Educated farmers make faster, safer decisions.</p>
+                            <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                <li>Attend workshops on climate-smart agriculture and flood safety.</li>
+                                <li>Promote youth involvement in farm safety and disaster response.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            document.getElementById(tabName + '-content').classList.add('active');
+            document.getElementById(tabName + '-tab-btn').classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "summary": {
+        "threat_score": 0.0,
+        "total_study_area_km2": 63.83,
+        "highest_risk_level": "Very Low Risk"
+    },
+    "area_distribution": {
+        "Very Low Risk": {
+            "area_km2": 63.83,
+            "percentage": 100.0
+        }
+    },
+    "recommendation": "SAFE: No significant flood threat detected."
+}

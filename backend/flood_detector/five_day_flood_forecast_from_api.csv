@@ -1,0 +1,6 @@
+date,river_level_station,river_status,local_rain_forecast,rain_category,flood_probability,risk_score,risk_class
+2025-09-27,349.55806236842096,Near flood threshold,0.0,Low,0.0,0.0,No
+2025-09-28,349.5202941228067,Near flood threshold,0.0,Low,0.0,0.0,No
+2025-09-29,349.448492280702,Near flood threshold,0.0,Low,0.0,0.0,No
+2025-09-30,349.3890089473685,Near flood threshold,0.0,Low,0.0,0.0,No
+2025-10-01,349.33730819298177,Near flood threshold,0.0,Low,0.0033333333333333335,0.0033333333333333335,No
