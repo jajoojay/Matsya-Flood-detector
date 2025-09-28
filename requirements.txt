@@ -4,7 +4,6 @@ joblib
 matplotlib
 cdsapi
 xarray 
-zipfile
 pickle
 numpy
 rasterio
