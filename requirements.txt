@@ -3,7 +3,6 @@ requests
 datetime
 joblib
 matplotlib
-os
 subprocess
 sys
 cdsapi
