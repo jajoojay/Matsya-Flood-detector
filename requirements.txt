@@ -4,7 +4,6 @@ joblib
 matplotlib
 cdsapi
 xarray 
-pickle
 numpy
 rasterio
 folium
