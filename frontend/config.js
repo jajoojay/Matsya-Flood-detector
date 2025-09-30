@@ -4,7 +4,7 @@
 const CONFIG = {
     // API Configuration
     API: {
-        BASE_URL: 'http://127.0.0.1:5000',
+        BASE_URL: 'https://matsya-flood-detector.onrender.com',
         ENDPOINTS: {
             currentFloodRisk: '/api/current_flood_risk',
             riverLevel: '/api/river_level',
