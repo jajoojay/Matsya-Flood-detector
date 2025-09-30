@@ -25,7 +25,7 @@ jobs:
 
      
       - name: Run the report generation script
-        run: python run_models.py
+        run: python backend/run_model.py
 
       - name: Commit and push files
         uses: stefanzweifel/git-auto-commit-action@v5
