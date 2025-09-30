@@ -32,13 +32,19 @@ def get_risk_level(prob):
 def get_current_flood_risk():
     """Endpoint to get the current flood risk."""
     try:
-        file_path = os.path.join(CSV_GENERATOR_PATH, 'flood_prediction.csv')
-        df = pd.read_csv(file_path)
-        latest_risk_prob = df['Flood_Prob'].iloc[-1]
-        risk = get_risk_level(latest_risk_prob)
+        # The 'flood_forecast.csv' is generated in the FLOOD_DETECTOR_PATH
+        file_path = os.path.join(FLOOD_DETECTOR_PATH, 'flood_forecast.csv')
+        df = pd.read_csv(file_path, parse_dates=['date']).sort_values('date')
+        
+        # Get the latest record
+        latest_record = df.iloc[-1]
+        
+        # Use the numeric 'flood_probability' for the risk level calculation
+        risk = get_risk_level(latest_record['flood_probability'])
         return jsonify(risk)
     except Exception as e:
         return jsonify({"error": f"Could not retrieve flood risk: {str(e)}"}), 500
+
 
 @app.route('/api/river_level', methods=['GET'])
 def get_river_level():
