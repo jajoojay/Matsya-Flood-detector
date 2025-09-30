@@ -3,11 +3,8 @@ requests
 joblib
 matplotlib
 cdsapi
-xarray 
+xarray
 numpy
 rasterio
 folium
-logging
-tempfile
-yaml
-geopandas 
+geopandas
