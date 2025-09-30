@@ -13,3 +13,4 @@ flask
 Flask-Cors
 matplotlib
 scikit-learn
+PyYAML
