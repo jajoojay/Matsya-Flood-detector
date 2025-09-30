@@ -12,3 +12,4 @@ gunicorn
 flask
 Flask-Cors
 matplotlib
+scikit-learn
