@@ -11,3 +11,4 @@ geopandas
 gunicorn
 flask
 Flask-Cors
+matplotlib
